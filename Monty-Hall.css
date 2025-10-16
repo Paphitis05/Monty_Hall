@@ -1,0 +1,285 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    padding: 2rem;
+    color: #333;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 3rem;
+    color: white;
+}
+
+h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.subtitle {
+    font-size: 1.2rem;
+    opacity: 0.9;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.status {
+    background: rgba(255, 255, 255, 0.95);
+    padding: 1rem 2rem;
+    border-radius: 12px;
+    text-align: center;
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 2rem;
+    display: inline-block;
+    width: 100%;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+}
+
+.status.hidden {
+    display: none;
+}
+
+.status.win-status {
+    background: #10b981;
+    color: white;
+}
+
+.status.lose-status {
+    background: #ef4444;
+    color: white;
+}
+
+.status.retry-status {
+    background: #3b82f6;
+    color: white;
+    animation: pulse 1s infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.7; }
+}
+
+.doors {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2rem;
+    max-width: 900px;
+    margin: 0 auto 2rem;
+}
+
+.door {
+    background: #5c4033;
+    border: 4px solid #3d2817;
+    border-radius: 12px;
+    height: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.door:hover {
+    transform: scale(1.05);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.door.selected {
+    border-color: #f6c341;
+    box-shadow: 0 0 20px rgba(231, 168, 9, 0.5);
+}
+
+.door.open {
+    background: #f5e6d3;
+    border-color: #fbbf24;
+}
+
+.door-content {
+    font-size: 4rem;
+    font-weight: bold;
+    color: rgba(255, 255, 255, 0.3);
+}
+
+.door.open .door-content {
+    font-size: 5rem;
+}
+
+.actions {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    margin-bottom: 2rem;
+}
+
+.actions.hidden {
+    display: none;
+}
+
+.btn {
+    padding: 1rem 2rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.btn-switch {
+    background: #3b82f6;
+    color: white;
+}
+
+.btn-stay {
+    background: white;
+    color: #333;
+    border: 2px solid #3b82f6;
+}
+
+.btn-primary {
+    background: #fbbf24;
+    color: #333;
+}
+
+.stats {
+    background: rgba(255, 255, 255, 0.95);
+    padding: 2rem;
+    border-radius: 12px;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.stats h2 {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    font-size: 2rem;
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin-bottom: 1rem;
+}
+
+.stat-box h3 {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+}
+
+.switch-stats h3 {
+    color: #3b82f6;
+}
+
+.stay-stats h3 {
+    color: #ef4444;
+}
+
+.stat-detail {
+    font-size: 0.9rem;
+    color: #666;
+    margin-bottom: 0.5rem;
+}
+
+.progress-bar {
+    height: 8px;
+    background: #c4a3e8;
+    border-radius: 4px;
+    overflow: hidden;
+    margin-bottom: 0.5rem;
+}
+
+.progress-fill {
+    height: 100%;
+    transition: width 0.5s ease;
+}
+
+.switch-fill {
+    background: #3b82f6;
+}
+
+.stay-fill {
+    background: #ef4444;
+}
+
+.stat-percent {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.switch-stats .stat-percent {
+    color: #3b82f6;
+}
+
+.stay-stats .stat-percent {
+    color: #ef4444;
+}
+
+.retry-count {
+    text-align: center;
+    padding: 1rem;
+    border-top: 1px solid #e5e7eb;
+    font-size: 1rem;
+    color: #666;
+}
+
+.retry-count span {
+    color: #3b82f6;
+    font-weight: bold;
+}
+
+.stats-note {
+    text-align: center;
+    font-size: 0.9rem;
+    color: #666;
+    font-style: italic;
+    margin-top: 1rem;
+}
+
+@media (max-width: 768px) {
+    h1 {
+        font-size: 2rem;
+    }
+    
+    .doors {
+        gap: 1rem;
+    }
+    
+    .door {
+        height: 200px;
+    }
+    
+    .actions {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .btn {
+        width: 100%;
+        max-width: 300px;
+    }
+}
